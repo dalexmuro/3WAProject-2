@@ -1,4 +1,5 @@
 
-data/sig.plk
-data/final_model.plk
-data/movies.plk
+data/sig_reccommendation.plk
+data/full_data.plk
+data/tfidf_overview_reccommendation.plk
+data/tfidf_scores_reccommendation.plk

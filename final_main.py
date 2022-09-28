@@ -1,13 +1,15 @@
+# Code modifié. Point d'entrée
+
 import pickle
 import pandas as pd
 from os.path import exists
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import sigmoid_kernel
 
-movies_cleaned_df = pd.read_pickle('data/movies.plk')
+movies_cleaned_df = pd.read_pickle('data/full_data.plk')
 movies = movies_cleaned_df.rename(columns={'imdb_id': 'id', 'plot_synopsis' : 'overview', 'title' : 'original_title'})
 
-final_model_path = 'data/final_model.plk'
+final_model_path = 'data/model_recommendation.plk'
 sig_path = 'data/sig.plk'
 
 if exists(final_model_path):
@@ -33,6 +35,8 @@ if exists(sig_path) :
     sig = pickle.load(open(sig_path, 'rb'))
     print(f'File {sig_path} opened successfully')
 
+
+# A voir changer le 2e tfv_matrix pour une matrice des moyennes de notes 
 else :
     sig = sigmoid_kernel(tfv_matrix, tfv_matrix)
     pickle.dump(sig, open(sig_path, 'wb'))

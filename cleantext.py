@@ -1,3 +1,6 @@
+# Méthodes cleanhtml et cleantext,
+# qui permettent de nettoyer le texte des reviews.
+
 import re
 import nltk
 
